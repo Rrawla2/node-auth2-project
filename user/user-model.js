@@ -1,17 +1,20 @@
+const db = require("../data/db-config")
+
 module.exports = {
-    insert,
-    getUsers,
+    add,
+    find,
     findBy,
     findById
 }
 
-function insert(user) {
+function add(user) {
     return db("users")
         .insert(user)
 }
 
-function getUsers() {
+function find() {
     return db("users")
+        .select("id", "username", "department")
 }
 
 function findBy(id) {

@@ -10,11 +10,11 @@ module.exports = (req, res, next) => {
             if (err) {
                 res.status(401).json({ message: "No access granted", err })
             } else {
-                res.decodedJwt = decodedToken
+                req.decodedToken = decodedToken
                 next()
             }
         })
     } else {
-        res.status(500).json({ message: "Error - not authorized" })
+        res.status(500).json({ message: "You shall not pass!" })
     }
 }
